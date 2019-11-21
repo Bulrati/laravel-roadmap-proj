@@ -1,0 +1,9 @@
+.idea
+
+### Docker-related stuff ###
+.env*
+!.env
+/docker-storage/mysql-data/*
+!/docker-storage/mysql-data/.gitkeep
+/docker-storage/nginx-logs/*
+!/docker-storage/nginx-logs/.gitkeep
