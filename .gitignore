@@ -3,6 +3,7 @@
 ### Docker-related stuff ###
 .env*
 !.env
+!.env.example
 /docker-storage/mysql-data/*
 !/docker-storage/mysql-data/.gitkeep
 /docker-storage/nginx-logs/*
