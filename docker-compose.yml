@@ -4,7 +4,7 @@ services:
   phpfpm:
     build:
       context: ./docker
-      dockerfile: webserver/DockerFile
+      dockerfile: phpfpm/DockerFile
     container_name: road-phpfpm
     links:
       - database

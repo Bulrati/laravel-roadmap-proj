@@ -12,3 +12,6 @@ restart:
 
 ssh:
 	@docker exec -it $(PHPFPM_CONTAINER) sh
+
+build:
+	@docker-compose up -d --build
