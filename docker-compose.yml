@@ -33,6 +33,6 @@ services:
     env_file:
       - ./.env.containers
     ports:
-      - "3306:3306"
+      - "3316:3306"
     volumes:
       - ./docker-storage/mysql-data:/var/lib/mysql
