@@ -17,20 +17,20 @@ use Illuminate\Support\Str;
 |
 */
 
-$factory->define( \App\User::class, function ( Faker $faker ) {
-	return [
-		'name'  => $faker->name,
-		'email' => $faker->unique()->email,
-	];
-} );
+$factory->define(\App\User::class, function (Faker $faker) {
+    return [
+        'name'  => $faker->name,
+        'email' => $faker->unique()->email,
+    ];
+});
 
-$factory->define( \App\Post::class, function ( Faker $faker ) {
-	return [
-		'author_id' => $faker->numberBetween( 1, 2 ),
-		'slug'      => $faker->unique()->word,
-		'title'     => $faker->sentence,
-		'content'   => $faker->sentence,
-		'excerpt'   => $faker->sentence,
-		'status_id' => $faker->numberBetween( 1, 3 )
-	];
-} );
+$factory->define(\App\Post::class, function (Faker $faker) {
+    return [
+        'author_id' => $faker->numberBetween(1, 2),
+        'slug'      => $faker->unique()->word,
+        'title'     => $faker->sentence,
+        'content'   => $faker->sentence,
+        'excerpt'   => $faker->sentence,
+        'status_id' => $faker->numberBetween(1, 3)
+    ];
+});
