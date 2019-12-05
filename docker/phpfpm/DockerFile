@@ -1,6 +1,7 @@
-FROM php:7.3-fpm
+FROM php:7.3-fpm-alpine
 
-RUN apt-get update && apt-get install -y wget git unzip \
+RUN apk add --no-cache \
+		g++ make autoconf \
     && pecl install xdebug-2.7.1 \
     && docker-php-ext-enable xdebug \
     && echo "xdebug.remote_enable=on" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini \
