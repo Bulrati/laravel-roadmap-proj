@@ -15,3 +15,15 @@ ssh:
 
 build:
 	@docker-compose up -d --build
+
+exec:
+	@docker exec -it $(PHPFPM_CONTAINER) $$cmd
+
+seed:
+	@make exec cmd="php artisan db:seed"
+
+migrate:
+	@make exec cmd="php artisan migrate"
+
+fresh:
+	@make exec cmd="php artisan migrate:fresh"
