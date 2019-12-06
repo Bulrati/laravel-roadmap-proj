@@ -11,12 +11,8 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-
-        \Illuminate\Support\Facades\DB::statement('SET FOREIGN_KEY_CHECKS=0');
-
         $this->call(PostStatusesTableSeeder::class);
-        $this->call(PostsTableSeeder::class);
         $this->call(UsersTableSeeder::class);
-
+        $this->call(PostsTableSeeder::class);
     }
 }

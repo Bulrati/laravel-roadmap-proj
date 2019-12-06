@@ -27,3 +27,9 @@ migrate:
 
 fresh:
 	@make exec cmd="php artisan migrate:fresh"
+
+reset:
+	@make exec cmd="php artisan migrate:reset"
+
+do_command:
+	@make exec cmd="$(external_cmd)"

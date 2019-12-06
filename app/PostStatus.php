@@ -6,9 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class PostStatus extends Model
 {
-    protected $table = 'post_statuses';
     public $timestamps = false;
-    protected $guarded = [];
+    protected $fillable = ['status'];
 
     const STATUS_PUBLISHED = 'published';
     const STATUS_UNPUBLISHED = 'unpublished';
