@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Post;
-use App\PostsStatus;
+use App\PostStatus;
 use App\User;
 use Illuminate\Http\Request;
 
@@ -58,7 +58,7 @@ class PostsController extends Controller
         $post_attributes           = $post->getAttributes();
         $post_attributes['author'] = User::find($post_attributes['author_id'])->name;
         unset($post_attributes['author_id']);
-        $post_attributes['status'] = PostsStatus::find($post_attributes['status_id'])->status;
+        $post_attributes['status'] = PostStatus::find($post_attributes['status_id'])->status;
         unset($post_attributes['status_id']);
 
         return view('posts.details')->with('post', $post_attributes)->with('a', $post);
@@ -88,6 +88,9 @@ class PostsController extends Controller
     {
         $post = Post::find($id);
         $post->update($request->all());
+        $post->status_id = $request->status_id;
+        $post->author_id = $request->author_id;
+        $post->save();
 
         return view('posts.updated')->with('post', $post);
     }
@@ -99,13 +102,18 @@ class PostsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function update_data_form_view($id)
+    public function updateDataFromView($id)
     {
         $users         = User::all()->toArray();
-        $post_statuses = PostsStatus::all()->toArray();
+        $post_statuses = PostStatus::all()->toArray();
 
-        return view('posts.edit_form')->with('post', Post::find($id))->with('users',
-            $users)->with('post_statuses', $post_statuses);
+        return view('posts.edit_form')->with('post', Post::find($id))->with(
+            'users',
+            $users
+        )->with(
+            'post_statuses',
+            $post_statuses
+        );
     }
 
     /**

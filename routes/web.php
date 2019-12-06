@@ -18,7 +18,7 @@ Route::get('/', function () {
 Route::get('posts', 'PostsController@index')->name('post.index');
 
 Route::get('posts/{id}', 'PostsController@show')->name('post.show');
-Route::get('posts/{id}/edit', 'PostsController@update_data_form_view')->name('post.edit_form');
+Route::get('posts/{id}/edit', 'PostsController@updateDataFromView')->name('post.edit_form');
 
 Route::post('posts', 'PostsController@create')->name('post.create');
 
