@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use App\User;
 
 class UsersTableSeeder extends Seeder
 {
@@ -12,9 +13,8 @@ class UsersTableSeeder extends Seeder
     public function run()
     {
 
-        \App\User::firstOrCreate(['email' => 'test1@gmail.com'], ['name' => 'Jack']);
-        \App\User::firstOrCreate(['email' => 'test2@gmail.com'], ['name' => 'Amelie']);
-        \App\User::firstOrCreate(['email' => 'test3@gmail.com'], ['name' => 'Rafael']);
-
+        User::firstOrCreate(['email' => 'test1@gmail.com'], ['name' => 'Jack']);
+        User::firstOrCreate(['email' => 'test2@gmail.com'], ['name' => 'Amelie']);
+        User::firstOrCreate(['email' => 'test3@gmail.com'], ['name' => 'Rafael']);
     }
 }

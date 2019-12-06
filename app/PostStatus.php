@@ -6,7 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class PostStatus extends Model
 {
-    protected $table = 'post_statuses';
     public $timestamps = false;
     protected $guarded = [];
 

@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use App\PostStatus;
 
 class PostStatusesTableSeeder extends Seeder
 {
@@ -12,10 +13,8 @@ class PostStatusesTableSeeder extends Seeder
     public function run()
     {
 
-        App\PostStatus::firstOrCreate(['status' => \App\PostStatus::STATUS_PUBLISHED]);
-        App\PostStatus::firstOrCreate(['status' => \App\PostStatus::STATUS_UNPUBLISHED]);
-        App\PostStatus::firstOrCreate(['status' => \App\PostStatus::STATUS_DRAFT]);
-
-
+        PostStatus::firstOrCreate(['status' => \App\PostStatus::STATUS_PUBLISHED]);
+        PostStatus::firstOrCreate(['status' => \App\PostStatus::STATUS_UNPUBLISHED]);
+        PostStatus::firstOrCreate(['status' => \App\PostStatus::STATUS_DRAFT]);
     }
 }
