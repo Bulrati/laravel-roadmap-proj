@@ -14,6 +14,7 @@ class PostsTableSeeder extends Seeder
     public function run()
     {
 
+        Post::unguard();
         Post::firstOrCreate(['slug' => 'post1'], [
             'author_id' => 1,
             'title'     => 'Title1',
@@ -42,5 +43,6 @@ class PostsTableSeeder extends Seeder
             'excerpt'   => 'Excerpt4',
             'status_id' => PostStatus::where('status', PostStatus::STATUS_DRAFT)->first()->id
         ]);
+        Post::reguard();
     }
 }

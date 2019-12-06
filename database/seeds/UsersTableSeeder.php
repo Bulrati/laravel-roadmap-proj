@@ -13,8 +13,10 @@ class UsersTableSeeder extends Seeder
     public function run()
     {
 
+        User::unguard();
         User::firstOrCreate(['email' => 'test1@gmail.com'], ['name' => 'Jack']);
         User::firstOrCreate(['email' => 'test2@gmail.com'], ['name' => 'Amelie']);
         User::firstOrCreate(['email' => 'test3@gmail.com'], ['name' => 'Rafael']);
+        User::reguard();
     }
 }
