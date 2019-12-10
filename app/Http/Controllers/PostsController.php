@@ -53,15 +53,14 @@ class PostsController extends Controller
      */
     public function show($id)
     {
-
         $post                      = Post::find($id);
         $post_attributes           = $post->getAttributes();
-        $post_attributes['author'] = User::find($post_attributes['author_id'])->name;
+        $post_attributes['author'] = $post->user->name;
         unset($post_attributes['author_id']);
-        $post_attributes['status'] = PostStatus::find($post_attributes['status_id'])->status;
+        $post_attributes['status'] = $post->status->status;
         unset($post_attributes['status_id']);
 
-        return view('posts.details')->with('post', $post_attributes)->with('a', $post);
+        return view('posts.details')->with('post', $post_attributes);
     }
 
     /**
