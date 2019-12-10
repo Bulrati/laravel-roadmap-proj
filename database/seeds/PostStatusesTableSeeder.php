@@ -13,8 +13,8 @@ class PostStatusesTableSeeder extends Seeder
     public function run()
     {
 
-        PostStatus::firstOrCreate(['status' => \App\PostStatus::STATUS_PUBLISHED]);
-        PostStatus::firstOrCreate(['status' => \App\PostStatus::STATUS_UNPUBLISHED]);
-        PostStatus::firstOrCreate(['status' => \App\PostStatus::STATUS_DRAFT]);
+        PostStatus::firstOrCreate(['status' => PostStatus::STATUS_PUBLISHED]);
+        PostStatus::firstOrCreate(['status' => PostStatus::STATUS_UNPUBLISHED]);
+        PostStatus::firstOrCreate(['status' => PostStatus::STATUS_DRAFT]);
     }
 }

@@ -13,4 +13,7 @@ class PostStatus extends Model
     const STATUS_UNPUBLISHED = 'unpublished';
     const STATUS_DRAFT = 'draft';
 
+    const ID_PUBLISHED = 1;
+    const ID_UNPUBLISHED = 2;
+    const ID_DRAFT = 3;
 }
