@@ -13,7 +13,7 @@
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('home');
 
 Route::get('posts', 'PostsController@index')->name('post.index');
 
@@ -25,3 +25,7 @@ Route::post('posts', 'PostsController@create')->name('post.create');
 Route::post('posts/{id}', 'PostsController@update')->name('post.update');
 
 Route::post('posts/{id}/delete', 'PostsController@destroy')->name('post.delete');
+
+Route::get('/demo', function () {
+    return view('demo');
+});
