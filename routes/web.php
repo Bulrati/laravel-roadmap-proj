@@ -18,14 +18,11 @@ Route::get('/', function () {
 Route::get('posts', 'PostsController@index')->name('post.index');
 
 Route::get('posts/{id}', 'PostsController@show')->name('post.show');
-Route::get('posts/{id}/edit', 'PostsController@updateDataFromView')->name('post.edit_form');
-
-Route::post('posts', 'PostsController@create')->name('post.create');
-
+Route::get('posts/{id}/edit', 'PostsController@edit')->name('post.edit');
 Route::post('posts/{id}', 'PostsController@update')->name('post.update');
 
-Route::post('posts/{id}/delete', 'PostsController@destroy')->name('post.delete');
+Route::get('/create-post', 'PostsController@create')->name('post.create');
+Route::post('posts', 'PostsController@store')->name('post.store');
 
-Route::get('/demo', function () {
-    return view('demo');
-});
+
+Route::post('posts/{id}/delete', 'PostsController@destroy')->name('post.delete');
