@@ -18,7 +18,7 @@ class PostsController extends Controller
     {
         $posts = Post::all();
 
-        return view('posts.index')->with('posts', $posts);
+        return view('posts.index', ['posts' => $posts]);
     }
 
     /**
@@ -31,13 +31,10 @@ class PostsController extends Controller
         $users         = User::all()->toArray();
         $post_statuses = PostStatus::all()->toArray();
 
-        return view('posts.create_form')->with(
-            'users',
-            $users
-        )->with(
-            'post_statuses',
-            $post_statuses
-        );
+        return view('posts.create_form', [
+            'users'         => $users,
+            'post_statuses' => $post_statuses
+        ]);
     }
 
     /**
@@ -53,10 +50,9 @@ class PostsController extends Controller
         $post->author_id = $request->author_id;
         $post->status_id = $request->status_id;
         $post->save();
-
         $status = 'New post was created. It\'s id: ' . $post->id;
 
-        return view('posts.status')->with('status', $status);
+        return view('posts.status', ['status' => $status]);
     }
 
     /**
@@ -75,7 +71,7 @@ class PostsController extends Controller
         $post_attributes['status'] = $post->status->status;
         unset($post_attributes['status_id']);
 
-        return view('posts.details')->with('post', $post_attributes);
+        return view('posts.details', ['post' => $post_attributes]);
     }
 
     /**
@@ -90,13 +86,11 @@ class PostsController extends Controller
         $users         = User::all()->toArray();
         $post_statuses = PostStatus::all()->toArray();
 
-        return view('posts.edit_form')->with('post', Post::find($id))->with(
-            'users',
-            $users
-        )->with(
-            'post_statuses',
-            $post_statuses
-        );
+        return view('posts.edit_form', [
+            'post'          => Post::find($id),
+            'users'         => $users,
+            'post_statuses' => $post_statuses
+        ]);
     }
 
     /**
@@ -116,7 +110,7 @@ class PostsController extends Controller
         $post->save();
         $status = $post->ID . ' was updated';
 
-        return view('posts.status')->with('status', $status);
+        return view('posts.status', ['status' => $status]);
     }
 
     /**
@@ -129,9 +123,8 @@ class PostsController extends Controller
     public function destroy($id)
     {
         Post::destroy($id);
-
         $status = 'Post #' . $id . ' was deleted';
 
-        return view('posts.status')->with('status', $status);
+        return view('posts.status', ['status' => $status]);
     }
 }
