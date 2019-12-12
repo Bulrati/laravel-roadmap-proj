@@ -13,7 +13,6 @@ class PostsTableSeeder extends Seeder
      */
     public function run()
     {
-
         Post::unguard();
         Post::firstOrCreate(['slug' => 'post1'], [
             'author_id' => 1,
