@@ -76,13 +76,21 @@ class PostsController extends Controller
      */
     public function edit($id)
     {
-        $users         = User::all()->toArray();
-        $post_statuses = PostStatus::all()->toArray();
+        $users         = User::all();
+        $post_statuses = PostStatus::all();
+
+        foreach ($users as $user) {
+            $users_options[$user->id] = $user->name;
+        }
+
+        foreach ($post_statuses as $post_status) {
+            $post_statuses_options[$post_status->id] = $post_status->status;
+        }
 
         return view('posts.edit_form', [
             'post'          => Post::find($id),
-            'users'         => $users,
-            'post_statuses' => $post_statuses
+            'users'         => $users_options,
+            'post_statuses' => $post_statuses_options
         ]);
     }
 
