@@ -26,3 +26,6 @@ Route::post('posts', 'PostsController@store')->name('post.store');
 
 
 Route::post('posts/{id}/delete', 'PostsController@destroy')->name('post.delete');
+Route::get('posts/{id}/delete', function ($id) {
+    return view('posts.deletion_check', ['id' => $id]);
+})->name('post.deletion_check');
