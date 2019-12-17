@@ -22,7 +22,7 @@
         <p>Slug: <u>{{$post->slug}}</u></p>
         <div class="d-flex align-items-center justify-content-between">
             <h5 class="font-weight-bold">Author: {{$post->user->name}}</h5>
-            <span class="text-success">Status: {{$post->status->status}}</span>
+            <span class="text-success">Status: {{$post->status::STATUSES[$post->status->status]}}</span>
         </div>
         <hr>
         <div class="mt-5 mb-5">
@@ -32,8 +32,8 @@
         <hr>
 
         <div class="d-flex flex-column align-items-end">
-            <span>Created: {{$post->created_at}}</span>
-            <span>Updated: {{$post->updated_at}}</span>
+            <span>Created: {{\App\Helper::transformDate($post->created_at, \App\Post::DATE_FORMAT)}}</span>
+            <span>Updated: {{\App\Helper::transformDate($post->updated_at, \App\Post::DATE_FORMAT)}}</span>
         </div>
         <div class="row justify-content-end pt-3 pb-3">
             <div class="col-lg-2 d-flex ">

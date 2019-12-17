@@ -4,7 +4,6 @@
     <div class="collapse navbar-collapse" id="navbar-collapse-01">
         <ul class="nav navbar-nav mr-auto">
             <li><a href="<?php echo route('post.index'); ?>">Posts</a></li>
-            <li><a href="<?php echo route('post.create'); ?>">New post</a></li>
         </ul>
     </div><!-- /.navbar-collapse -->
 </nav>

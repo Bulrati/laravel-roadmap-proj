@@ -2,11 +2,15 @@
 @section('content')
 
     <div class="container-fluid">
-        <div>
-            <ul>
-
-            </ul>
-        </div>
+        <div class="row">
+            <div class="col-lg-6">
+                <h1>Posts</h1>
+            </div>
+            <div class="row col-lg-6 align-items-center justify-content-end">
+                <div class="col col-lg-3">
+                    <a class="btn btn-block btn-lg btn-primary" href="<?php echo route('post.create'); ?>">New post</a>
+                </div>
+            </div>
         <table class="table">
             <thead>
             <tr>

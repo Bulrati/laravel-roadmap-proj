@@ -13,6 +13,8 @@ class Post extends Model
         'excerpt'
     ];
 
+    const DATE_FORMAT = 'd-m-Y H-i';
+
     public function status()
     {
         return $this->belongsTo('App\PostStatus', 'status_id');
