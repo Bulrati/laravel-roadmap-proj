@@ -23,6 +23,11 @@ class PostStatus extends Model
     const ID_UNPUBLISHED = 2;
     const ID_DRAFT = 3;
 
+    /**
+     * Returns all Statuses
+     *
+     * @return \Illuminate\Support\Collection
+     */
     public static function getAllStatuses()
     {
         $postStatuses        = self::all();

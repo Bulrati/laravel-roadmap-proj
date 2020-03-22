@@ -8,6 +8,11 @@ class User extends Model
 {
     protected $fillable = ['name', 'email'];
 
+    /**
+     * Get all user names
+     *
+     * @return \Illuminate\Support\Collection
+     */
     public static function getAllNames()
     {
         $users      = self::all();
