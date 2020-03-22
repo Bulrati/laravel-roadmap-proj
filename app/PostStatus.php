@@ -24,11 +24,8 @@ class PostStatus extends Model
 
     public static function getAllStatuses()
     {
-        $postStatusesOptions = [];
         $postStatuses        = self::all();
-        foreach ($postStatuses as $postStatus) {
-            $postStatusesOptions[$postStatus->id] = $postStatus::STATUSES[$postStatus->status];
-        }
+        $postStatusesOptions = $postStatuses->pluck('status', 'id');
 
         return $postStatusesOptions;
     }

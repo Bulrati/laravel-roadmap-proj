@@ -10,11 +10,8 @@ class User extends Model
 
     public static function getAllNames()
     {
-        $usersNames = [];
         $users      = self::all();
-        foreach ($users as $user) {
-            $usersNames[$user->id] = $user->name;
-        }
+        $usersNames = $users->pluck('name', 'id');
 
         return $usersNames;
     }
