@@ -32,8 +32,8 @@
         <hr>
 
         <div class="d-flex flex-column align-items-end">
-            <span>Created: {{\App\Helper::transformDate($post->created_at, \App\Post::DATE_FORMAT)}}</span>
-            <span>Updated: {{\App\Helper::transformDate($post->updated_at, \App\Post::DATE_FORMAT)}}</span>
+            <span>Created: {{App\Helpers\DateHelpers\Helper::transformDate($post->created_at, \App\Post::DATE_FORMAT)}}</span>
+            <span>Updated: {{App\Helpers\DateHelpers\Helper::transformDate($post->updated_at, \App\Post::DATE_FORMAT)}}</span>
         </div>
         <div class="row justify-content-end pt-3 pb-3">
             <div class="col-lg-2 d-flex ">
