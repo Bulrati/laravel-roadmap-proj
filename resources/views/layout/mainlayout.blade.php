@@ -15,6 +15,8 @@
 
 @include('layout.partials.header')
 
+@include('flash-message.flash-message')
+
 @yield('content')
 
 @include('layout.partials.footer')

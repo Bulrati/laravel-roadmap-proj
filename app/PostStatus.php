@@ -18,6 +18,7 @@ class PostStatus extends Model
         self::STATUS_UNPUBLISHED => 'Unpublished',
         self::STATUS_DRAFT       => 'Draft'
     ];
+
     const ID_PUBLISHED = 1;
     const ID_UNPUBLISHED = 2;
     const ID_DRAFT = 3;

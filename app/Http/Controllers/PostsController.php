@@ -50,9 +50,10 @@ class PostsController extends Controller
         $post->author_id = $request->author_id;
         $post->status_id = $request->status_id;
         $post->save();
-        $status = 'New post was created. It\'s id: ' . $post->id;
+        $message = 'New post was created. It\'s id: '.$post->id;
+        $status  = 'success';
 
-        return view('posts.status', ['status' => $status]);
+        return redirect()->route('post.index')->with($status, $message);
     }
 
     /**
@@ -76,23 +77,13 @@ class PostsController extends Controller
      */
     public function edit($id)
     {
-        $users                 = User::all();
-        $post_statuses         = PostStatus::all();
-        $users_options         = [];
-        $post_statuses_options = [];
-
-        foreach ($users as $user) {
-            $users_options[$user->id] = $user->name;
-        }
-
-        foreach ($post_statuses as $post_status) {
-            $post_statuses_options[$post_status->id] = $post_status::STATUSES[$post_status->status];
-        }
+        $usersOptions        = User::getAllNames();
+        $postStatusesOptions = PostStatus::getAllStatuses();
 
         return view('posts.edit_form', [
             'post'          => Post::find($id),
-            'users'         => $users_options,
-            'post_statuses' => $post_statuses_options
+            'users'         => $usersOptions,
+            'post_statuses' => $postStatusesOptions
         ]);
     }
 
@@ -111,9 +102,10 @@ class PostsController extends Controller
         $post->status_id = $request->status_id;
         $post->author_id = $request->author_id;
         $post->save();
-        $status = $post->ID . ' was updated';
+        $message = $post->ID.' was updated';
+        $status  = 'success';
 
-        return view('posts.status', ['status' => $status]);
+        return redirect()->route('post.index')->with($status, $message);
     }
 
     /**
@@ -126,8 +118,9 @@ class PostsController extends Controller
     public function destroy($id)
     {
         Post::destroy($id);
-        $status = 'Post #' . $id . ' was deleted';
+        $message = 'Post #' . $id . ' was deleted';
+        $status  = 'success';
 
-        return view('posts.status', ['status' => $status]);
+        return redirect()->route('post.index')->with($status, $message);
     }
 }
