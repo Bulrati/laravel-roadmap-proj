@@ -21,4 +21,15 @@ class PostStatus extends Model
     const ID_PUBLISHED = 1;
     const ID_UNPUBLISHED = 2;
     const ID_DRAFT = 3;
+
+    public static function getAllStatuses()
+    {
+        $postStatusesOptions = [];
+        $postStatuses        = self::all();
+        foreach ($postStatuses as $postStatus) {
+            $postStatusesOptions[$postStatus->id] = $postStatus::STATUSES[$postStatus->status];
+        }
+
+        return $postStatusesOptions;
+    }
 }

@@ -28,22 +28,12 @@ class PostsController extends Controller
      */
     public function create()
     {
-        $users                 = User::all();
-        $post_statuses         = PostStatus::all();
-        $users_options         = [];
-        $post_statuses_options = [];
-
-        foreach ($users as $user) {
-            $users_options[$user->id] = $user->name;
-        }
-
-        foreach ($post_statuses as $post_status) {
-            $post_statuses_options[$post_status->id] = $post_status::STATUSES[$post_status->status];
-        }
+        $usersOptions        = User::getAllNames();
+        $postStatusesOptions = PostStatus::getAllStatuses();
 
         return view('posts.create_form', [
-            'users'         => $users_options,
-            'post_statuses' => $post_statuses_options
+            'users'         => $usersOptions,
+            'post_statuses' => $postStatusesOptions
         ]);
     }
 
