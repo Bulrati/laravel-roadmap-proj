@@ -5,8 +5,8 @@ namespace App\Helpers\DateHelpers;
 class Helper
 {
 
-    public static function transformDate($date, $format = 'd-m-Y')
+    public static function formatToDateTime($date)
     {
-        return date($format, strtotime($date));
+        return date(config('constants.dateFormat'), strtotime($date));
     }
 }
