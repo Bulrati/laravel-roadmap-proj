@@ -32,8 +32,8 @@
         <hr>
 
         <div class="d-flex flex-column align-items-end">
-            <span>Created: {{App\Helpers\DateHelpers\Helper::formatToDateTime($post->created_at, config('constants.dateFormat') )}}</span>
-            <span>Updated: {{App\Helpers\DateHelpers\Helper::formatToDateTime($post->updated_at, config('constants.dateFormat'))}}</span>
+            <span>Created: {{App\Helpers\DateHelpers\Helper::formatToDateTime($post->created_at)}}</span>
+            <span>Updated: {{App\Helpers\DateHelpers\Helper::formatToDateTime($post->updated_at)}}</span>
         </div>
         <div class="row justify-content-end pt-3 pb-3">
             <div class="col-lg-2 d-flex ">

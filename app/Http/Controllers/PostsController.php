@@ -65,7 +65,7 @@ class PostsController extends Controller
      */
     public function show($id)
     {
-        return view('posts.details', ['post' => Post::find($id)]);
+        return view('posts.details', ['post' => Post::findOrFail($id)]);
     }
 
     /**
@@ -81,7 +81,7 @@ class PostsController extends Controller
         $postStatusesOptions = PostStatus::getAllStatuses();
 
         return view('posts.edit_form', [
-            'post'          => Post::find($id),
+            'post'          => Post::findOrFail($id),
             'users'         => $usersOptions,
             'post_statuses' => $postStatusesOptions
         ]);
@@ -97,7 +97,7 @@ class PostsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $post = Post::find($id);
+        $post = Post::findOrFail($id);
         $post->update($request->all());
         $post->status_id = $request->status_id;
         $post->author_id = $request->author_id;
