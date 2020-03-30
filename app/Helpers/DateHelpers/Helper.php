@@ -1,12 +1,11 @@
 <?php
 
-namespace App\Helpers\DateHelpers;
+namespace DateHelper;
 
 use Carbon\Carbon;
 
 class Helper
 {
-
     /**
      *
      * Formats date to the specific format
@@ -16,6 +15,6 @@ class Helper
      */
     public static function formatToDateTime($date)
     {
-        return date(config('constants.dateFormat'), Carbon::parse($date)->timestamp);
+        return Carbon::parse($date)->format(config('constants.dateFormat'));
     }
 }

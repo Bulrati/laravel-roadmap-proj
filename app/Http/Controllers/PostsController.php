@@ -28,12 +28,12 @@ class PostsController extends Controller
      */
     public function create()
     {
-        $usersOptions        = User::getAllNames();
-        $postStatusesOptions = PostStatus::getAllStatuses();
+        $usersNames        = User::getAllNames();
+        $postStatusesNames = PostStatus::getAllStatuses();
 
         return view('posts.create_form', [
-            'users'         => $usersOptions,
-            'post_statuses' => $postStatusesOptions
+            'users'         => $usersNames,
+            'post_statuses' => $postStatusesNames
         ]);
     }
 
@@ -77,13 +77,13 @@ class PostsController extends Controller
      */
     public function edit($id)
     {
-        $usersOptions        = User::getAllNames();
-        $postStatusesOptions = PostStatus::getAllStatuses();
+        $userNames        = User::getAllNames();
+        $postStatusesNames = PostStatus::getAllStatuses();
 
         return view('posts.edit_form', [
             'post'          => Post::findOrFail($id),
-            'users'         => $usersOptions,
-            'post_statuses' => $postStatusesOptions
+            'users'         => $userNames,
+            'post_statuses' => $postStatusesNames
         ]);
     }
 
