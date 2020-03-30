@@ -1,3 +1,6 @@
+<?php
+ use App\Helpers\DateHelper;
+?>
 @extends('layout.mainlayout')
 @section('content')
     <div class="container">
@@ -32,8 +35,8 @@
         <hr>
 
         <div class="d-flex flex-column align-items-end">
-            <span>Created: {{DateHelper\Helper::formatToDateTime($post->created_at)}}</span>
-            <span>Updated: {{\DateHelper\Helper::formatToDateTime($post->updated_at)}}</span>
+            <span>Created: {{DateHelper::formatToDateTime($post->created_at)}}</span>
+            <span>Updated: {{DateHelper::formatToDateTime($post->updated_at)}}</span>
         </div>
         <div class="row justify-content-end pt-3 pb-3">
             <div class="col-lg-2 d-flex ">

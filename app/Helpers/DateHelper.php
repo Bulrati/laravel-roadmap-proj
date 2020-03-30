@@ -1,10 +1,10 @@
 <?php
 
-namespace DateHelper;
+namespace App\Helpers;
 
 use Carbon\Carbon;
 
-class Helper
+class DateHelper
 {
     /**
      *
