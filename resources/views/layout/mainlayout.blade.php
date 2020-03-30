@@ -8,7 +8,7 @@
 
 </head>
 
-<body>
+<body class="mb-5 pb-4">
 
 
 @include('layout.partials.nav')
@@ -23,6 +23,6 @@
 
 @include('layout.partials.footer-scripts')
 
- </body>
+</body>
 
 </html>

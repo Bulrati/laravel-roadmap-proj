@@ -14,23 +14,33 @@
             </div>
         </div>
         <div class="mt-5 mb-5">
-            {!! Form::label('Title') !!}:
-            <p>{{Form::text('title')}}</p>
+            <div class="row">
+                <div class="col">
+                    {!! Form::label('Title') !!}:
+                    <p>{{Form::text('title', '', array('class' => 'form-control'))}}</p>
+                </div>
+                <div class="col">
+                    {!! Form::label('Slug') !!}:
+                    <p>{{Form::text('slug', '', array('class' => 'form-control'))}}</p>
+                </div>
 
-            {!! Form::label('Slug') !!}:
-            <p>{{Form::text('slug')}}</p>
-
-            {!! Form::label('Author') !!}:
-            <p>{{Form::select('author_id', $users)}}</p>
-
-            {!! Form::label('Content') !!}:
-            <p>{{Form::textarea('content')}}</p>
-
-            {!! Form::label('Excerpt') !!}:
-            <p>{{Form::textarea('excerpt')}}</p>
-
+                <div class="col">
+                    {!! Form::label('Author') !!}:
+                    <p>{{Form::select('author_id', $users, null, array('class' => 'form-control'))}}</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    {!! Form::label('Content') !!}:
+                    <p>{{Form::textarea('content', '', array('class' => 'form-control'))}}</p>
+                </div>
+                <div class="col">
+                    {!! Form::label('Excerpt') !!}:
+                    <p>{{Form::textarea('excerpt', '', array('class' => 'form-control'))}}</p>
+                </div>
+            </div>
             {!! Form::label('Status') !!}:
-            <p>{{Form::select('status_id', $post_statuses)}}</p>
+            <p>{{Form::select('status_id', $post_statuses, null, array('class' => 'form-control'))}}</p>
         </div>
         {{Form::close()}}
         <hr>

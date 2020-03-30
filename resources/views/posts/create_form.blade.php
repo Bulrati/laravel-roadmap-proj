@@ -17,23 +17,32 @@
             </div>
         </div>
         <div class="mt-5 mb-5">
-            {!! Form::label('Title') !!} *:
-            <p>{{Form::text('title', '', array('required' => 'required'))}}</p>
-
-            {!! Form::label('Slug') !!} *:
-            <p>{{Form::text('slug', '', array('required' => 'required'))}}</p>
-
-            {!! Form::label('Author') !!}:
-            <p>{{Form::select('author_id', $users)}}</p>
-
-            {!! Form::label('Content') !!} *:
-            <p>{{Form::textarea('content', '', array('required' => 'required'))}}</p>
-
-            {!! Form::label('Excerpt') !!} *:
-            <p>{{Form::textarea('excerpt', '', array('required' => 'required'))}}</p>
-
+            <div class="row">
+                <div class="col">
+                    {!! Form::label('Title') !!} *:
+                    <p>{{Form::text('title', '', array('required' => 'required', 'class' => 'form-control'))}}</p>
+                </div>
+                <div class="col">
+                    {!! Form::label('Slug') !!} *:
+                    <p>{{Form::text('slug', '', array('required' => 'required', 'class' => 'form-control'))}}</p>
+                </div>
+                <div class="col">
+                    {!! Form::label('Author') !!}:
+                    <p>{{Form::select('author_id', $users, null, array( 'class' => 'form-control' ))}}</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    {!! Form::label('Content') !!} *:
+                    <p>{{Form::textarea('content', '', array('required' => 'required', 'class' => 'form-control'))}}</p>
+                </div>
+                <div class="col">
+                    {!! Form::label('Excerpt') !!} *:
+                    <p>{{Form::textarea('excerpt', '', array('required' => 'required', 'class' => 'form-control'))}}</p>
+                </div>
+            </div>
             {!! Form::label('Status') !!}:
-            <p>{{Form::select('status_id', $post_statuses)}}</p>
+            <p>{{Form::select('status_id', $post_statuses, null, array( 'class' => 'form-control' ))}}</p>
         </div>
         {{Form::close()}}
     </div>
