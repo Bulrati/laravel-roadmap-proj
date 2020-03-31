@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StorePost;
 use App\Post;
 use App\PostStatus;
 use App\User;
@@ -40,11 +41,11 @@ class PostsController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param \Illuminate\Http\Request $request
+     * @param  \Illuminate\Http\Request  $request
      *
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StorePost $request)
     {
         $post            = new Post($request->all());
         $post->author_id = $request->author_id;
@@ -59,7 +60,7 @@ class PostsController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param int $id
+     * @param  int  $id
      *
      * @return \Illuminate\Http\Response
      */
@@ -71,13 +72,13 @@ class PostsController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param int $id
+     * @param  int  $id
      *
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
-        $userNames        = User::getAllNames();
+        $userNames         = User::getAllNames();
         $postStatusesNames = PostStatus::getAllStatuses();
 
         return view('posts.edit_form', [
@@ -90,8 +91,8 @@ class PostsController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param \Illuminate\Http\Request $request
-     * @param int $id
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
      *
      * @return \Illuminate\Http\Response
      */
@@ -111,14 +112,14 @@ class PostsController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param int $id
+     * @param  int  $id
      *
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
         Post::destroy($id);
-        $message = 'Post #' . $id . ' was deleted';
+        $message = 'Post #'.$id.' was deleted';
         $status  = 'success';
 
         return redirect()->route('post.index')->with($status, $message);
