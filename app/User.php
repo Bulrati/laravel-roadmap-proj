@@ -11,12 +11,12 @@ class User extends Model
     /**
      * Get all user names
      *
-     * @return \Illuminate\Support\Collection
+     * @return array
      */
     public static function getAllNames()
     {
         $users      = self::all();
-        $usersNames = $users->pluck('name', 'id');
+        $usersNames = $users->pluck('name', 'id')->toArray();
 
         return $usersNames;
     }

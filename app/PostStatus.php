@@ -26,12 +26,12 @@ class PostStatus extends Model
     /**
      * Returns all Statuses
      *
-     * @return \Illuminate\Support\Collection
+     * @return array
      */
     public static function getAllStatuses()
     {
         $postStatuses        = self::all();
-        $postStatusesOptions = $postStatuses->pluck('status', 'id');
+        $postStatusesOptions = $postStatuses->pluck('status', 'id')->toArray();
 
         return $postStatusesOptions;
     }
