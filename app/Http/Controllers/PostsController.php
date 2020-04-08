@@ -30,9 +30,6 @@ class PostsController extends Controller
     {
         $usersNames        = User::getAllNames();
         $postStatusesNames = PostStatus::getAllStatuses();
-        array_unshift($usersNames, 'Please select');
-        array_unshift($postStatusesNames, 'Please select');
-
 
         return view('posts.create_form', [
             'users'         => $usersNames,
@@ -82,8 +79,6 @@ class PostsController extends Controller
     {
         $userNames         = User::getAllNames();
         $postStatusesNames = PostStatus::getAllStatuses();
-        array_unshift($userNames, 'Please select');
-        array_unshift($postStatusesNames, 'Please select');
 
         return view('posts.edit_form', [
             'post'          => Post::findOrFail($id),

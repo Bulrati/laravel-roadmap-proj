@@ -1,6 +1,9 @@
 @extends('layout.mainlayout')
 @section('content')
-
+    <?php
+    array_unshift($users, 'Please select');
+    array_unshift($post_statuses, 'Please select');
+    ?>
     <div class="container">
         {{Form::model($post, ['action' => ['PostsController@update', $post->id], 'method' => 'post'])}}
         <div class="row">
