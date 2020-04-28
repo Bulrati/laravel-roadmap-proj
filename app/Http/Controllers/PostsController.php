@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StorePost;
+use App\Http\Requests\StorePostRequest;
+use App\Http\Requests\UpdatePostRequest;
 use App\Post;
 use App\PostStatus;
 use App\User;
@@ -40,11 +41,11 @@ class PostsController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  StorePost  $request
+     * @param  StorePostRequest  $request
      *
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function store(StorePost $request)
+    public function store(StorePostRequest $request)
     {
         $post            = new Post($request->all());
         $post->author_id = $request->author_id;
@@ -90,12 +91,12 @@ class PostsController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  StorePost  $request
+     * @param  StorePostRequest  $request
      * @param  int  $id
      *
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(StorePost $request, $id)
+    public function update(UpdatePostRequest $request, $id)
     {
         $post = Post::findOrFail($id);
         $post->update($request->all());
