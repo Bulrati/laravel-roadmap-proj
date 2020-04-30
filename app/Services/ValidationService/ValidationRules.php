@@ -2,6 +2,8 @@
 
 namespace App\Services;
 
+use Illuminate\Support\Arr;
+
 class ValidationRules
 {
     const RULES = [
@@ -15,7 +17,7 @@ class ValidationRules
                 'required' => true,
                 'string'   => true,
                 'unique'   => 'posts',
-                'regex'    => '/^[a-zA-Z0-9_-]*$/'
+                'regex'    => '/^[a-z\d_-]*$/i'
             ],
             'title'     => [
                 'required' => true,
@@ -27,29 +29,47 @@ class ValidationRules
             'status_id' => [
                 'required' => true,
                 'integer'  => true,
-//                'exists'   => 'post_statuses.id',
+                'exists'   => 'post_statuses,id',
             ],
         ],
     ];
 
+    /**
+     * Get set of rules for the specific entity
+     *
+     * @param  string  $entityName
+     *
+     * @return array
+     */
     public static function get(string $entityName): array
     {
-        $resultRules = self::concatenateRules(self::RULES[$entityName]);
+        $resultRules = self::concatenateRules(Arr::get(self::RULES, $entityName));
 
         return $resultRules;
     }
 
+    /**
+     * Get set of rules for the specific entity except of some rules
+     *
+     * @param  string  $entityName
+     * @param  array  $rulesToExclude
+     *
+     * @return array
+     */
     public static function except(string $entityName, array $rulesToExclude = []): array
     {
-        $rules = self::RULES[$entityName];
+        $rules = Arr::get(self::RULES, $entityName);
         foreach ($rulesToExclude as $ruleToExclude => $ruleValue) {
-            if ( ! empty($rules[$ruleToExclude]) && array_key_exists($ruleValue,
-                    $rules[$ruleToExclude])) {
+            if (!empty(Arr::get($rules, $ruleToExclude)) && array_key_exists(
+                    $ruleValue,
+                    Arr::get($rules, $ruleToExclude)
+                )) {
                 unset($rules[$ruleToExclude][$ruleValue]);
             }
         }
 
         $rules = self::concatenateRules($rules);
+
         return $rules;
     }
 
@@ -76,11 +96,18 @@ class ValidationRules
         return $response;
     }
 
-    protected static function concatenateRules(array $rulesMainArray)
+    /**
+     * Concatenate array of rules into the string
+     *
+     * @param  array  $rawRules
+     *
+     * @return array
+     */
+    protected static function concatenateRules(array $rawRules): array
     {
         $resultRules = [];
-        if ( ! empty($rulesMainArray)) {
-            foreach ($rulesMainArray as $ruleName => $rulesArray) {
+        if (!empty($rawRules)) {
+            foreach ($rawRules as $ruleName => $rulesArray) {
                 $rules = [];
                 foreach ($rulesArray as $rule => $value) {
                     $rules[] = self::formDefaultRule($rule, $value);

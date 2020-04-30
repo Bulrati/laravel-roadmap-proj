@@ -3,10 +3,26 @@
 namespace App\Http\Requests;
 
 use App\Facades\ValidationRulesService;
-use App\Services\ValidationRules;
 
 class UpdatePostRequest extends BaseRequest
 {
+    public $validationRulesService;
+
+
+    public function __construct(
+        ValidationRulesService $validationRulesService,
+        array $query = [],
+        array $request = [],
+        array $attributes = [],
+        array $cookies = [],
+        array $files = [],
+        array $server = [],
+        $content = null
+    ) {
+        parent::__construct($query, $request, $attributes, $cookies, $files, $server, $content);
+        $this->validationRulesService = $validationRulesService;
+    }
+
     /**
      * Get the validation rules that apply to the request.
      *
@@ -14,29 +30,6 @@ class UpdatePostRequest extends BaseRequest
      */
     public function rules()
     {
-        return ValidationRulesService::except('post', ['slug' => 'unique']);
-    }
-
-    /**
-     * Get the error messages for the defined validation rules.
-     *
-     * @return array
-     */
-    public function messages()
-    {
-        return [
-            'exists'      => 'Such :attribute does not exist',
-            'slug.unique' => 'This :attribute is already exist',
-            'slug.regex'  => ':attribute should contain only letters, numbers, \'_\', \'-\'',
-        ];
-    }
-
-
-    public function attributes()
-    {
-        return [
-            'author_id' => 'author',
-            'status_id' => 'status'
-        ];
+        return $this->validationRulesService::except('post', ['slug' => 'unique']);
     }
 }
