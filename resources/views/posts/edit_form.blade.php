@@ -1,6 +1,9 @@
 @extends('layout.mainlayout')
 @section('content')
-
+    <?php
+    array_unshift($users, 'Please select');
+    array_unshift($post_statuses, 'Please select');
+    ?>
     <div class="container">
         {{Form::model($post, ['action' => ['PostsController@update', $post->id], 'method' => 'post'])}}
         <div class="row">
@@ -17,11 +20,11 @@
             <div class="row">
                 <div class="col">
                     {!! Form::label('Title') !!}:
-                    <p>{{Form::text('title', '', array('class' => 'form-control'))}}</p>
+                    <p>{{Form::text('title', null, array('class' => 'form-control'))}}</p>
                 </div>
                 <div class="col">
                     {!! Form::label('Slug') !!}:
-                    <p>{{Form::text('slug', '', array('class' => 'form-control'))}}</p>
+                    <p>{{Form::text('slug', null, array('class' => 'form-control'))}}</p>
                 </div>
 
                 <div class="col">
@@ -32,11 +35,11 @@
             <div class="row">
                 <div class="col">
                     {!! Form::label('Content') !!}:
-                    <p>{{Form::textarea('content', '', array('class' => 'form-control'))}}</p>
+                    <p>{{Form::textarea('content', null, array('class' => 'form-control'))}}</p>
                 </div>
                 <div class="col">
                     {!! Form::label('Excerpt') !!}:
-                    <p>{{Form::textarea('excerpt', '', array('class' => 'form-control'))}}</p>
+                    <p>{{Form::textarea('excerpt', null, array('class' => 'form-control'))}}</p>
                 </div>
             </div>
             {!! Form::label('Status') !!}:
